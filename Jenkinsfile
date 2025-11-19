@@ -2,15 +2,10 @@ pipeline {
     agent any
 
     stages {
-        stage('Install Dependencies') {
+        stage('Build & Run Tests') {
             steps {
-                sh 'npm install'
-            }
-        }
-
-        stage('Run Tests') {
-            steps {
-                sh 'mvn clean verify'  // o el comando que uses para tus tests
+                // Para Windows: usar 'bat'
+                bat 'mvn clean verify -DskipTests=false'
             }
         }
 
