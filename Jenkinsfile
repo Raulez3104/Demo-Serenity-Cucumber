@@ -2,9 +2,14 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout'){
+            steps{
+                git 'https://github.com/Raulez3104/Demo-Serenity-Cucumber.git'
+            }
+
+        }
         stage('Build & Run Tests') {
             steps {
-                // Para Windows: usar 'bat'
                 bat 'mvn clean verify -DskipTests=false'
             }
         }
